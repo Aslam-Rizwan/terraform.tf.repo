@@ -1,0 +1,23 @@
+trigger: none
+
+pool: 
+ name: agent_jhund
+
+
+jobs:
+- job:
+  steps:
+  - task: TerraformTask@5
+    displayName: terraform init
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/'
+      backendServiceArm: 'serviceconnection1'
+      backendAzureRmStorageAccountName: 'stg1eastus'
+      backendAzureRmContainerName: 'tfstate'
+      backendAzureRmKey: 'terraform.tfstate'
+
+  
+
+
